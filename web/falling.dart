@@ -9,6 +9,7 @@ import 'package:stagexl/stagexl.dart';
 //-----------------------------------------------------------------------------
 
 part "statemanager.dart";
+part "player.dart";
 part "state/state.dart";
 part "state/init.dart";
 part "state/menu.dart";

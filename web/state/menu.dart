@@ -38,7 +38,8 @@ class Menu extends State{
 	  const spaceBar = 32;
 	  stage.onKeyDown.listen((value){
 			if(value.keyCode == spaceBar){
-				closeStream();
+				stage.removeEventListeners("keyDown");
+			  closeStream();
 			}
 	  });
 

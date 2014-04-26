@@ -12,13 +12,18 @@ class Init extends State{
 
 	  String loadingText = "loading";
 	  TextFormat loadingFormat = new TextFormat('Helvetica,Arial',28,0x5D8AA8,bold:true,italic:true);
-	  TextField loading = new TextField(loadingText,loadingFormat);
-	  loading
+	  TextField loading = new TextField(loadingText,loadingFormat)
 		  ..x = 400
 	    ..y = 300;
-
 	  stage.addChild(loading);
-		//resourceManager.load().then((_)=>closeStream);
-	  closeStream();
+
+	  resourceManager..addBitmapData("player","images/player64x64.png")
+	    ..addBitmapData("point","images/greenBall64x64.png")
+	    ..addBitmapData("trap","images/redBall64x64.png")
+	    ..addBitmapData("life","images/greenBall32x32.png");
+
+
+		resourceManager.load().then((_){closeStream();});
+	  //closeStream();
   }
 }
