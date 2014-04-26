@@ -16,15 +16,19 @@ part "state/menu.dart";
 //-----------------------------------------------------------------------------
 
 Element canvas;
+Stage stage;
 RenderLoop renderLoop;
 ResourceManager resourceManager;
 StateManager stateManager;
 
 void main() {
   canvas = querySelector('#stage');
+  stage = new Stage(canvas,webGL: true);
 	renderLoop = new RenderLoop();
 	resourceManager = new ResourceManager();
 	stateManager = new StateManager();
+	
+	renderLoop.addStage(stage);
 
   stateManager.addStateMap({"init" : new Init("menu"),
                             "menu" : new Menu()});

@@ -4,8 +4,9 @@ abstract class State extends Stream<String> {
 
 	StreamController<String> _controller;
   String _nextState;
-  
+
   State([String nextState = null]): _nextState = nextState {
+
 	  _controller = new StreamController<String>(
 			  onListen: _onListen,
 			  onPause: _onPause,
@@ -26,7 +27,6 @@ abstract class State extends Stream<String> {
   void _onListen(){
 	  print("Constructing");
     run();
-               
   }
   
   void _onPause(){
@@ -38,10 +38,11 @@ abstract class State extends Stream<String> {
   }
   
   void _onCancel(){
-	  print("Deconstructing");
+    print("Deconstructing");
+    stage.removeChildren();	  
   }
   
-  run(){}
+  run();
   
   String get nextState => _nextState;
   
