@@ -30,6 +30,8 @@ void main() {
 	
 	renderLoop.addStage(stage);
 
+  stage.focus = stage;
+
   stateManager.addStateMap({"init" : new Init("menu"),
                             "menu" : new Menu()});
 
