@@ -17,13 +17,15 @@ class Init extends State{
 	    ..y = 300;
 	  stage.addChild(loading);
 
-	  resourceManager..addBitmapData("player","images/player64x64.png")
-	    ..addBitmapData("point","images/greenBall64x64.png")
-	    ..addBitmapData("trap","images/redBall64x64.png")
-	    ..addBitmapData("life","images/greenBall32x32.png");
-
+	  resourceManager..addBitmapData("player","images/ball/player64x64.png")
+	    ..addBitmapData("point","images/ball/greenBall64x64.png")
+	    ..addBitmapData("trap","images/ball/redBall64x64.png")
+	    ..addBitmapData("life","images/ball/greenBall32x32.png")
+	    ..addBitmapData("part1Block","images/block/sprite_1.png")
+		  ..addBitmapData("part2Block","images/block/sprite_2.png")
+		  ..addBitmapData("part3Block","images/block/sprite_3.png")
+		  ..addBitmapData("supriseBlock","images/block/sprite_4.png");
 
 		resourceManager.load().then((_){closeStream();});
-	  //closeStream();
   }
 }

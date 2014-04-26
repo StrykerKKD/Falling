@@ -7,12 +7,12 @@ class Menu extends State{
   run(){
 	  addMessage("Menu:Running");
 
-	  BitmapData backgroundBitmapData = new BitmapData(800, 600, false, 0xC9FFE5);
+	  BitmapData backgroundBitmapData = new BitmapData(800, 600, false, 0xA0785A);
 	  Bitmap backgroundBitmap = new Bitmap(backgroundBitmapData);
 	  stage.addChild(backgroundBitmap);
 
 	  String titleText = "Falling";
-	  TextFormat titleFormat = new TextFormat('Helvetica,Arial',28,0x5D8AA8,bold:true,italic:true);
+	  TextFormat titleFormat = new TextFormat('Helvetica,Arial',28,0x232B2B,bold:true,italic:true);
 	  TextField title = new TextField(titleText,titleFormat)
 		  ..x = 350
 		  ..y = 200;

@@ -4,12 +4,16 @@ library falling;
 
 import 'dart:html';
 import 'dart:async';
+import 'dart:math';
 import 'package:stagexl/stagexl.dart';
 
 //-----------------------------------------------------------------------------
 
 part "statemanager.dart";
-part "player.dart";
+part "Sprite/animatedsprite.dart";
+part "Sprite/player.dart";
+part "Sprite/point.dart";
+part "Sprite/block.dart";
 part "state/state.dart";
 part "state/init.dart";
 part "state/menu.dart";
