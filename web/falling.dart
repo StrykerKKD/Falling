@@ -12,6 +12,7 @@ part "statemanager.dart";
 part "state/state.dart";
 part "state/init.dart";
 part "state/menu.dart";
+part "state/level1.dart";
 
 //-----------------------------------------------------------------------------
 
@@ -33,7 +34,8 @@ void main() {
   stage.focus = stage;
 
   stateManager.addStateMap({"init" : new Init("menu"),
-                            "menu" : new Menu()});
+                            "menu" : new Menu("level1"),
+                            "level1": new Level1()});
 
 	stateManager.initState("init");
   
