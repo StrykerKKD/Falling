@@ -6,7 +6,7 @@ class Init extends State{
   run(){
 	  print("Init:Running");
 	  
-	  BitmapData backgroundBitmapData = new BitmapData(800, 600, false, 0xC9FFE5);
+	  BitmapData backgroundBitmapData = new BitmapData(800, 600, false, mainColor);
 	  Bitmap backgroundBitmap = new Bitmap(backgroundBitmapData);
     stage.addChild(backgroundBitmap);
 

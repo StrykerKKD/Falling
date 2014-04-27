@@ -6,8 +6,7 @@ class Menu extends State{
   
   run(){
 	  print("Menu:Running");
-
-	  BitmapData backgroundBitmapData = new BitmapData(800, 600, false, 0xA0785A);
+	  BitmapData backgroundBitmapData = new BitmapData(800, 600, false, mainColor);
 	  Bitmap backgroundBitmap = new Bitmap(backgroundBitmapData);
 	  stage.addChild(backgroundBitmap);
 

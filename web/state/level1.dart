@@ -6,9 +6,30 @@ class Level1 extends State {
 	run(){
 		print("Level1:Running");
 
-		BitmapData backgroundBitmapData = new BitmapData(800, 600, false, 0xA0785A);
+		BitmapData backgroundBitmapData = new BitmapData(800, 600, false, 0xFFFFFF);
 		Bitmap backgroundBitmap = new Bitmap(backgroundBitmapData);
 		stage.addChild(backgroundBitmap);
+
+
+		backgroundBitmap.bitmapData.fillRect(new Rectangle(0,0,800,600),mainColor+=0x0000FF);
+
+		//new Timer.periodic(new Duration(seconds:1),)
+
+		int score = 0;
+		String scoreTitle = "Score:";
+		String scoreText = "$score";
+		TextFormat textFormat = new TextFormat('Helvetica,Arial',28,0x232B2B,bold:true,italic:true);
+		TextField titleTextField = new TextField(scoreTitle,textFormat)
+			..x = 10
+			..y = 10;
+		TextField scoreTextField = new TextField(scoreText,textFormat)
+			..x = 100
+			..y = 10;
+		stage.addChild(titleTextField);
+		stage.addChild(scoreTextField);
+
+		Timer scoreTimer = new Timer.periodic(new Duration(seconds:0.5),
+			(_){ score+=150; scoreTextField.text="$score"; });
 
 		Player player = new Player(resourceManager.getBitmapData("player"));
 		stage.addChild(player);
@@ -25,11 +46,20 @@ class Level1 extends State {
 		Random random = new Random();
 		Block block;
 		List<Block> deadBlockList = new List<Block>();
-		Timer timer = new Timer.periodic(new Duration(seconds:2),(_){
+		int xCoorBlock;
+		int randomNumber;
+		Timer timer = new Timer.periodic(new Duration(seconds:1),(_){
 			deadBlockList.addAll(blockList.where((value)=>!value.alive));
 
+			randomNumber = random.nextInt(700);
+			if(randomNumber <= 64){
+				xCoorBlock = randomNumber + 100;
+			}else{
+				xCoorBlock = randomNumber;
+			}
+
 			block = deadBlockList[random.nextInt(deadBlockList.length)]
-			..x = random.nextInt(800)
+			..x = xCoorBlock
 			..y = 600
 			..alive = true;
 			stage.addChild(block);
@@ -66,7 +96,21 @@ class Level1 extends State {
 		});
 		num i = 0;
 		List<Block> aliveBlockList = new List<Block>();
+
 		stage.onEnterFrame.listen((_){
+
+			if(score > 9000){
+				stage..removeEventListeners("enterFrame")
+					..removeEventListeners("keyDown")
+					..removeEventListeners("keyUp");
+				timer.cancel();
+				scoreTimer.cancel();
+
+				nextState = "victory";
+				closeStream();
+			}
+
+
 			aliveBlockList.addAll(blockList.where((value)=>value.alive));
 
 			aliveBlockList.forEach((block){
@@ -75,7 +119,7 @@ class Level1 extends State {
 						..removeEventListeners("keyDown")
 						..removeEventListeners("keyUp");
 					timer.cancel();
-
+					scoreTimer.cancel();
 
 					//closeStream();
 					if(i==0){

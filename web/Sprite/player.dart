@@ -4,7 +4,7 @@ class Player extends AnimatedSprite{
 	bool movingLeft = false;
   bool movingRight = false;
   
-  Player(BitmapData bitmapData,{int vx:150}):super(bitmapData,vx:vx,x:400,y:75);
+  Player(BitmapData bitmapData,{int vx:250}):super(bitmapData,vx:vx,x:400,y:75);
 	
 	bool advanceTime(num time){
 	  if(movingLeft && x > width/2){

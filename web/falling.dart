@@ -7,6 +7,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:stagexl/stagexl.dart';
 
+
 //-----------------------------------------------------------------------------
 
 part "statemanager.dart";
@@ -19,6 +20,7 @@ part "state/init.dart";
 part "state/menu.dart";
 part "state/level1.dart";
 part "state/end.dart";
+part "state/victory.dart";
 
 //-----------------------------------------------------------------------------
 
@@ -27,6 +29,7 @@ Stage stage;
 RenderLoop renderLoop;
 ResourceManager resourceManager;
 StateManager stateManager;
+var mainColor = 0x7AA241;
 
 void main() {
   canvas = querySelector('#stage');
@@ -42,7 +45,8 @@ void main() {
   stateManager.addStateMap({"init" : new Init("init","menu"),
                             "menu" : new Menu("menu","level1"),
                             "level1": new Level1("level1","end"),
-                            "end": new End("end","level1")});
+                            "end": new End("end","level1"),
+                            "victory": new Victory("victory")});
 
 	stateManager.initState("init");
   
