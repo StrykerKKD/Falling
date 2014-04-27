@@ -1,10 +1,10 @@
 part of falling;
 
 class Init extends State{
-  Init([String nextState]):super(nextState);
+  Init(String name,[String nextState]):super(name,nextState);
 
   run(){
-	  addMessage("Init:Running");
+	  print("Init:Running");
 	  
 	  BitmapData backgroundBitmapData = new BitmapData(800, 600, false, 0xC9FFE5);
 	  Bitmap backgroundBitmap = new Bitmap(backgroundBitmapData);

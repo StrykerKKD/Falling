@@ -2,10 +2,10 @@ part of falling;
 
 class Menu extends State{
   
-  Menu([String nextState]):super(nextState);
+  Menu(String name,[String nextState]):super(name,nextState);
   
   run(){
-	  addMessage("Menu:Running");
+	  print("Menu:Running");
 
 	  BitmapData backgroundBitmapData = new BitmapData(800, 600, false, 0xA0785A);
 	  Bitmap backgroundBitmap = new Bitmap(backgroundBitmapData);

@@ -39,10 +39,10 @@ void main() {
 
   stage.focus = stage;
 
-  stateManager.addStateMap({"init" : new Init("menu"),
-                            "menu" : new Menu("level1"),
-                            "level1": new Level1("end"),
-                            "end": new End()});
+  stateManager.addStateMap({"init" : new Init("init","menu"),
+                            "menu" : new Menu("menu","level1"),
+                            "level1": new Level1("level1","end"),
+                            "end": new End("end","level1")});
 
 	stateManager.initState("init");
   

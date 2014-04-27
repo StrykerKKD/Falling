@@ -1,10 +1,10 @@
 part of falling;
 
 class Level1 extends State {
-	Level1([String nextState]):super(nextState);
+	Level1(String name,[String nextState]):super(name,nextState);
 
 	run(){
-		addMessage("Level1:Running");
+		print("Level1:Running");
 
 		BitmapData backgroundBitmapData = new BitmapData(800, 600, false, 0xA0785A);
 		Bitmap backgroundBitmap = new Bitmap(backgroundBitmapData);
@@ -64,7 +64,7 @@ class Level1 extends State {
 					break;
 			}
 		});
-
+		num i = 0;
 		List<Block> aliveBlockList = new List<Block>();
 		stage.onEnterFrame.listen((_){
 			aliveBlockList.addAll(blockList.where((value)=>value.alive));
@@ -76,7 +76,12 @@ class Level1 extends State {
 						..removeEventListeners("keyUp");
 					timer.cancel();
 
-					closeStream();
+
+					//closeStream();
+					if(i==0){
+						pauseStream();
+					}
+					i++;
 				}
 			});
 		});

@@ -3,9 +3,12 @@ part of falling;
 abstract class State extends Stream<String> {
 
 	StreamController<String> _controller;
-  String _nextState;
+  String _name;
+	String _nextState;
 
-  State([String nextState = null]): _nextState = nextState {
+	static const String PAUSE = "PAUSE";
+
+  State(this._name,[String nextState = null]): _nextState = nextState {
 
 	  _controller = new StreamController<String>(
 			  onListen: _onListen,
@@ -49,15 +52,21 @@ abstract class State extends Stream<String> {
   run();
   
   String get nextState => _nextState;
-  
-  set nextState(state) => _nextState=state;
-  
-  void addMessage(message){
+
+  set nextState(state) => _nextState = state;
+
+	String get name => _name;
+
+  /*void addMessage(message){
     _controller.add(message);
-  }
+  }*/
   
   void closeStream(){
     _controller.close();
   }
+
+	void pauseStream(){
+		_controller.add(PAUSE);
+	}
   
 }
