@@ -25,10 +25,8 @@ class Level1 extends State {
 		Random random = new Random();
 		Block block;
 		List<Block> deadBlockList = new List<Block>();
-		new Timer.periodic(new Duration(seconds:2),(_){
-			blockList.forEach((value){
-				if(!value.alive){deadBlockList.add(value);}
-			});
+		Timer timer = new Timer.periodic(new Duration(seconds:2),(_){
+			deadBlockList.addAll(blockList.where((value)=>!value.alive));
 
 			block = deadBlockList[random.nextInt(deadBlockList.length)]
 			..x = random.nextInt(800)
@@ -66,7 +64,23 @@ class Level1 extends State {
 					break;
 			}
 		});
-		//closeStream();
+
+		List<Block> aliveBlockList = new List<Block>();
+		stage.onEnterFrame.listen((_){
+			aliveBlockList.addAll(blockList.where((value)=>value.alive));
+
+			aliveBlockList.forEach((block){
+				if(player.hitTestObject(block)){
+					stage..removeEventListeners("enterFrame")
+						..removeEventListeners("keyDown")
+						..removeEventListeners("keyUp");
+					timer.cancel();
+
+					closeStream();
+				}
+			});
+		});
+
 	}
 
 

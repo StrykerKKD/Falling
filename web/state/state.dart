@@ -31,15 +31,19 @@ abstract class State extends Stream<String> {
   
   void _onPause(){
 	  print("Pause");
+	  stage.removeChildren();
+	  stage.juggler.clear();
   }
   
   void _onResume(){
 	  print("Resume");
+	  run();
   }
   
   void _onCancel(){
     print("Deconstructing");
-    stage.removeChildren();	  
+    stage.removeChildren();
+	  stage.juggler.clear();
   }
   
   run();
@@ -55,6 +59,5 @@ abstract class State extends Stream<String> {
   void closeStream(){
     _controller.close();
   }
-  
   
 }

@@ -18,6 +18,7 @@ part "state/state.dart";
 part "state/init.dart";
 part "state/menu.dart";
 part "state/level1.dart";
+part "state/end.dart";
 
 //-----------------------------------------------------------------------------
 
@@ -40,7 +41,8 @@ void main() {
 
   stateManager.addStateMap({"init" : new Init("menu"),
                             "menu" : new Menu("level1"),
-                            "level1": new Level1()});
+                            "level1": new Level1("end"),
+                            "end": new End()});
 
 	stateManager.initState("init");
   

@@ -38,6 +38,7 @@ class StateManager{
     _currentState = _stateMap[_currentState.nextState];
     _currentSubscription = _currentState.listen((message){print("Message: $message");},
         onDone: onDoneHandler);
+
   }
 
 	void pauseState(){
