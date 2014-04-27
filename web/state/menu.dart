@@ -10,6 +10,8 @@ class Menu extends State{
 	  Bitmap backgroundBitmap = new Bitmap(backgroundBitmapData);
 	  stage.addChild(backgroundBitmap);
 
+	  //backgroundBitmap.bitmapData.fillRect(new Rectangle(0,0,800,600),color_rgb_int);
+
 	  String titleText = "Falling";
 	  TextFormat titleFormat = new TextFormat('Helvetica,Arial',28,0x232B2B,bold:true,italic:true);
 	  TextField title = new TextField(titleText,titleFormat)

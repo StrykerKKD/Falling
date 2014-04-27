@@ -11,9 +11,34 @@ class Level1 extends State {
 		stage.addChild(backgroundBitmap);
 
 
-		backgroundBitmap.bitmapData.fillRect(new Rectangle(0,0,800,600),mainColor+=0x0000FF);
 
-		//new Timer.periodic(new Duration(seconds:1),)
+
+
+
+
+
+
+
+		int coloRed = 255;
+		int coloGreen = 255;
+		int colorBlue = 255;
+
+		Rectangle rect = new Rectangle(0,0,800,600);
+		new Timer.periodic(new Duration(seconds:0.14),(_){
+			String a_hex_str   = 255.toRadixString(16); // 255 is ff, or fully opaque
+			String r_hex_str   = coloRed.toRadixString(16);
+			String g_hex_str   = coloGreen.toRadixString(16);
+			String b_hex_str   = colorBlue.toRadixString(16);
+			String rgb_hex_str = '0x$a_hex_str$r_hex_str$g_hex_str$b_hex_str';
+
+			int color_rgb_int = int.parse(rgb_hex_str);
+
+			backgroundBitmap.bitmapData.fillRect(rect,color_rgb_int);
+
+			coloRed-=1;
+			coloGreen-=1;
+			colorBlue-=1;
+		});
 
 		int score = 0;
 		String scoreTitle = "Score:";
