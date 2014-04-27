@@ -29,6 +29,7 @@ Stage stage;
 RenderLoop renderLoop;
 ResourceManager resourceManager;
 StateManager stateManager;
+Rectangle rect;
 var mainColor = 0x7AA241;
 
 void main() {
@@ -37,6 +38,7 @@ void main() {
 	renderLoop = new RenderLoop();
 	resourceManager = new ResourceManager();
 	stateManager = new StateManager();
+  rect = new Rectangle(0,0,800,600);
 	
 	renderLoop.addStage(stage);
 

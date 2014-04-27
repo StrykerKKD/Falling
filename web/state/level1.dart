@@ -11,19 +11,10 @@ class Level1 extends State {
 		stage.addChild(backgroundBitmap);
 
 
-
-
-
-
-
-
-
-
 		int coloRed = 255;
 		int coloGreen = 255;
 		int colorBlue = 255;
 
-		Rectangle rect = new Rectangle(0,0,800,600);
 		new Timer.periodic(new Duration(seconds:0.14),(_){
 			String a_hex_str   = 255.toRadixString(16); // 255 is ff, or fully opaque
 			String r_hex_str   = coloRed.toRadixString(16);
